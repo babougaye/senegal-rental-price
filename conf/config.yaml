@@ -1,0 +1,11 @@
+defaults:
+  - model: random_forest
+  - data: default
+  - _self_
+
+output_dir: models/
+seed: 42
+
+mlflow:
+  tracking_uri: "sqlite:///mlflow.db"
+  experiment_name: "senegal-rental-price"

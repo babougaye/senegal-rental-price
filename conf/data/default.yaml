@@ -1,0 +1,29 @@
+raw_path: data/raw/locations_senegal.csv
+processed_path: data/processed/locations_senegal_clean.csv
+test_size: 0.2
+target: prix_loyer_mensuel
+
+villes:
+  - Dakar
+  - Thiès
+  - Saint-Louis
+  - Mbour
+  - Saly
+
+quartiers_dakar:
+  - Almadies
+  - Mermoz
+  - Plateau
+  - Ouakam
+  - Sacré-Coeur
+  - Liberté
+  - Yoff
+  - Ngor
+  - Parcelles Assainies
+  - Grand Yoff
+
+types_bien:
+  - appartement
+  - maison
+  - studio
+  - villa

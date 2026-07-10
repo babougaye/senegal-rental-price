@@ -1,0 +1,32 @@
+# syntax=docker/dockerfile:1
+
+# ---- Build stage -----------------------------------------------------------
+FROM python:3.11-slim AS builder
+
+WORKDIR /build
+
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir streamlit==1.32.* requests==2.31.*
+
+# ---- Runtime stage ----------------------------------------------------------
+FROM python:3.11-slim AS runtime
+
+RUN groupadd --gid 1000 appuser && \
+    useradd --uid 1000 --gid appuser --shell /bin/bash --create-home appuser
+
+COPY --from=builder /opt/venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH" \
+    SRP_API_URL=http://api:8000
+
+WORKDIR /app
+COPY frontend ./frontend
+
+RUN chown -R appuser:appuser /app
+USER appuser
+
+EXPOSE 8501
+
+CMD ["streamlit", "run", "frontend/streamlit_app.py", "--server.address=0.0.0.0", "--server.port=8501"]

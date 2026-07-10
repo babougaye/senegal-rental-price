@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+
+# Data & models (not versioned, see data/README.md)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+models/*
+!models/.gitkeep
+mlruns/
+mlartifacts/
+mlflow.db
+mlflow_data/
+
+# Tests & tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Notebooks
+.ipynb_checkpoints/
+
+# Env / secrets
+.env
+
+# OS
+.DS_Store
+outputs/
+
+# Node / React front bonus
+frontend/react-app/node_modules/
+frontend/react-app/dist/
