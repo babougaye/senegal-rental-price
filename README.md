@@ -1,0 +1,1 @@
+# senegal-rental-price
